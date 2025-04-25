@@ -70,6 +70,9 @@
 #include "VehicleComponent.h"
 #include "VideoManager.h"
 
+#include "httprequestmanager.h"
+#include "pythonmanager.h"
+
 #ifndef QGC_DISABLE_MAVLINK_INSPECTOR
 #include "MAVLinkInspectorController.h"
 #endif
@@ -267,6 +270,7 @@ QGCApplication::~QGCApplication()
 
 }
 
+//San registering qml types here
 void QGCApplication::init()
 {
     SettingsManager::instance()->init();
@@ -283,6 +287,10 @@ void QGCApplication::init()
     QGCCorePlugin::registerQmlTypes();
     GPSRtk::registerQmlTypes();
     JoystickManager::registerQmlTypes();
+
+    RequestManager::registerQmlTypes();
+    PythonManager::registerQmlTypes();
+
 #ifdef QGC_VIEWER3D
     Viewer3DManager::registerQmlTypes();
 #endif
